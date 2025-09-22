@@ -99,4 +99,35 @@ public class EmployeeController {
 
     }
 
+    /**
+     * 根据ID获取员工信息
+     */
+    @GetMapping("/{id}")
+    @ApiOperation("根据ID获取员工信息")
+    public Result<Employee> getById(@PathVariable String id){
+        Employee employee = employeeService.getById(id);
+        return Result.success(employee);
+    }
+
+    /**
+     * 编辑员工信息
+     */
+    @PutMapping()
+    @ApiOperation("编辑员工信息")
+    public Result infoEdit(@RequestBody EmployeeDTO employeeDTO){
+        employeeService.update(employeeDTO);
+        return Result.success();
+    }
+
+    /**
+     * 启用/禁用账户
+     */
+    @PostMapping("/status/{status}")
+    @ApiOperation("启用or禁用账户")
+    public Result switchStatus(@PathVariable Integer status,long id){
+        employeeService.switchStatus(status,id);
+        return Result.success();
+
+    }
+
 }
