@@ -50,7 +50,6 @@ public interface DishMapper {
      * 根据ID删除
      * @param ids
      */
-    @Delete("delete from dish where id = #{id}")
     void deleteByIds(List<Long> ids);
 
     /**
